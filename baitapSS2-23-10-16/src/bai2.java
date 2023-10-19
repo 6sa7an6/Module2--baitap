@@ -24,55 +24,69 @@ public class bai2 {
                     ;
                     break;
                 case 2:
-                        System.out.println(
-                                "a.Trên cùng bên trái (top-left) \n" +
-                                        "b.Trên cùng bên phải( top-right)\n" +
-                                        "c.Dưới cùng bên trái( bottom-left) \n" +
-                                        "d.Dưới cùng bên phải(bottom-right)\n"
-                        );
-                        String next = sc1.nextLine();
-                        switch (next) {
-                            case "a":
-                                for (int i = 5; i >= 1; i--) {
-                                    for (int j = 1; j <= i; j++) {
-                                        System.out.print(" * ");
-                                    }
-                                    System.out.println();
+                    System.out.println(
+                            "a.Trên cùng bên trái (top-left) \n" +
+                                    "b.Trên cùng bên phải( top-right)\n" +
+                                    "c.Dưới cùng bên trái( bottom-left) \n" +
+                                    "d.Dưới cùng bên phải(bottom-right)\n"
+                    );
+                    String next = sc1.nextLine();
+                    switch (next) {
+                        case "a":
+                            for (int i = 5; i >= 1; i--) {
+                                for (int j = 1; j <= i; j++) {
+                                    System.out.print(" * ");
                                 }
-                                break;
-                            case "b":
-                                for (int i = 0; i < 5; i++) {
-                                    for (int j = 0; j < i; j++) {
-                                        System.out.print("  ");
-                                    }
-                                    for (int k = i; k < 5; k++) {
-                                        System.out.print("* ");
-                                    }
-                                    System.out.println();
+                                System.out.println();
+                            }
+                            break;
+                        case "b":
+                            for (int i = 0; i < 5; i++) {
+                                for (int j = 0; j < i; j++) {
+                                    System.out.print("  ");
                                 }
-                                break;
-                            case "c":
-                                for(int i=0; i<=5; i++){
-                                    for(int j=0; j<i; j++){
-                                        System.out.print(" * ");
-                                    }
-                                    System.out.println();
+                                for (int k = i; k < 5; k++) {
+                                    System.out.print("* ");
                                 }
-                            case "d":
-                                for(int i = 5 ; i>=0;i--){
-                                    for(int j = 0 ; j < i ; j++){
-                                        System.out.print(" ");
-                                    }
-                                    for(int k = 5 ; k >= i  ; k--){
-                                        System.out.print("*");
-                                    }
-                                    System.out.println();
+                                System.out.println();
+                            }
+                            break;
+                        case "c":
+                            for (int i = 0; i <= 5; i++) {
+                                for (int j = 0; j < i; j++) {
+                                    System.out.print(" * ");
                                 }
+                                System.out.println();
+                            }
+                        case "d":
+                            for (int i = 5; i >= 0; i--) {
+                                for (int j = 0; j < i; j++) {
+                                    System.out.print(" ");
+                                }
+                                for (int k = 5; k >= i; k--) {
+                                    System.out.print("*");
+                                }
+                                System.out.println();
+                            }
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < 5; i++) {
+                        for (int j = 0; j <5-i; j++) {
+                            System.out.print(" ");
                         }
+                        for (int k = 1; k <= 2 * i - 1; k++) {
+                            System.out.print("*");
+                        }
+                        System.out.println();
+                    };
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Bạn đã nhập sai yêu cầu nhập lại");
             }
-            if(numb1 == 4){
-                break;
-            }
+            if (numb1 == 4) break;
         }
     }
 }
