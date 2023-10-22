@@ -20,6 +20,31 @@ public class bai9Phan1 {
                 max2 = arr[i];
             }
         }
+        System.out.println("Số lớn thứ 2 trong mảng là :" + max2);
+    }
+//cách 2 :
+
+    public static void main2(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Hãy nhập độ dài mảng bạn muốn : ");
+        int l = sc.nextInt();
+        int[] arr = new int[l];
+        for (int i = 0; i < l; i++) {
+            System.out.printf("Hãy nhập phần tử thứ %d : ", i + 1);
+            arr[i] = sc.nextInt();
+        }
+        int max1 = 0;
+        int max2 = 0;
+        for(int i = 0 ; i < arr.length;i++){
+            if(max1 < arr[i]){
+                max1 = arr[i];
+            }
+        }
+        for(int i = 0 ; i < arr.length; i++){
+            if(max2 < arr[i] && max2 != max1){
+                max2 = arr[i];
+            }
+        }
         System.out.println(max2);
     }
 }
