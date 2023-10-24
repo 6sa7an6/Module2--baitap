@@ -1,3 +1,5 @@
+package Phan1;
+
 import java.util.Scanner;
 
 public class bai6Phan1 {
