@@ -53,9 +53,7 @@ public class Fan {
     public Fan() {
     }
 
-    ;
-
-    public void displayFan() {
+    public String toString() {
         String speedText = null;
         switch (speed) {
             case 1:
@@ -71,16 +69,9 @@ public class Fan {
                 break;
         }
         if (on) {
-            System.out.println("Thông tin của Quạt " + fanNumber);
-            System.out.println("Tốc độ của quạt là : " + speedText);
-            System.out.println("Màu của quạt là : " + color);
-            System.out.println("Bán kính của quạt là : " + radius);
-            System.out.println("Fan is on");
+            return "Speed: " + speedText + ", Color : " + color + ", Radius : " + radius + ", Fan is on .";
         } else {
-            System.out.println("Thông tin của Quạt " + fanNumber);
-            System.out.println("Màu của quạt là : " + color);
-            System.out.println("Bán kính của quạt là : " + radius);
-            System.out.println("Fan is off");
+            return "Color : " + color + ", Radius : " + radius + ", Fan is off .";
         }
     }
 }
