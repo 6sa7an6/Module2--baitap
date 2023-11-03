@@ -5,17 +5,11 @@ public class Fan {
     private boolean on;
     private double radius;
     private String color;
-    private static int fanCount = 1;
-
-    private int fanNumber;
-
     public Fan(int speed, boolean on, double radius, String color) {
         this.speed = speed;
         this.on = on;
         this.radius = radius;
         this.color = color;
-        fanNumber = fanCount++;
-
     }
 
     public int getSpeed() {
