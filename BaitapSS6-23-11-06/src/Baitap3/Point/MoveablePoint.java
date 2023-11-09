@@ -50,9 +50,10 @@ public class MoveablePoint extends Point{
                 '}';
     }
 
-    public void move(){
+    public MoveablePoint move(){
         setX(getX() + xSpeed);
         setY(getY() + ySpeed);
+        return this;
     }
 
 }
