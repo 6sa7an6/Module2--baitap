@@ -14,7 +14,7 @@ public class Main {
             System.out.print(shape.dienTich());
             if(shape instanceof Square){
                 Square colorable = (Square) shape;
-                System.out.println(colorable.howToColor());
+                colorable.howToColor();
             }
         }
     }
