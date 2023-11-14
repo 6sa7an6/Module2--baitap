@@ -12,7 +12,7 @@ public class Main {
         queue.offer(3);
         queue.offer(9);
         while (!queue.isEmpty()) {
-            System.out.println(queue.poll());
+            System.out.println(queue.remove());
         }
     }
 }
