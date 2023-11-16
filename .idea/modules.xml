@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/BaitapSS10-23-11-15/BaitapSS10-23-11-15.iml" filepath="$PROJECT_DIR$/BaitapSS10-23-11-15/BaitapSS10-23-11-15.iml" />
       <module fileurl="file://$PROJECT_DIR$/BaitapSS6-23-11-06/BaitapSS6-23-11-06.iml" filepath="$PROJECT_DIR$/BaitapSS6-23-11-06/BaitapSS6-23-11-06.iml" />
       <module fileurl="file://$PROJECT_DIR$/BaitapSS7-23-11-08/BaitapSS7-23-11-08.iml" filepath="$PROJECT_DIR$/BaitapSS7-23-11-08/BaitapSS7-23-11-08.iml" />
       <module fileurl="file://$PROJECT_DIR$/BaitapSS8-23-11-10/BaitapSS8-23-11-10.iml" filepath="$PROJECT_DIR$/BaitapSS8-23-11-10/BaitapSS8-23-11-10.iml" />
