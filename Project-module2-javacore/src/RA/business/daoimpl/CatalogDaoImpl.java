@@ -51,7 +51,7 @@ public class CatalogDaoImpl implements ICatalogDao {
 
     @Override
     public List<Catalog> findByName(String catalogName) {
-        return catalogs.stream().filter(c->c.getCatalogName().contains(catalogName)).collect(Collectors.toList());
+        return catalogs.stream().filter(c->c.getCatalogName().toLowerCase().contains(catalogName.toLowerCase())).collect(Collectors.toList());
     }
 
     @Override

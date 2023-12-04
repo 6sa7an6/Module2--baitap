@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IOFile {
-    public static String PRODUCT_PATH = "C:\\User\\Admin\\Desktop\\MD2-java-baitap\\Project-module2-javacore\\src\\RA\\business\\data\\product.txt";
-    public static String CATALOG_PATH = "C:\\User\\Admin\\Desktop\\MD2-java-baitap\\Project-module2-javacore\\src\\RA\\business\\data\\catalog.txt";
+    public static String PRODUCT_PATH = "C:\\Users\\Admin\\Desktop\\MD2-java-baitap\\Project-module2-javacore\\src\\RA\\data\\product.txt";
+    public static String CATALOG_PATH = "C:\\Users\\Admin\\Desktop\\MD2-java-baitap\\Project-module2-javacore\\src\\RA\\data\\catalog.txt";
     public static String USER_PATH = "C:\\Users\\Admin\\Desktop\\MD2-java-baitap\\Project-module2-javacore\\src\\RA\\data\\user.txt";
+    public static String ORDER_PATH = "C:\\Users\\Admin\\Desktop\\MD2-java-baitap\\Project-module2-javacore\\src\\RA\\data\\order.txt";
+    public static String ISLOGIN_PATH = "C:\\Users\\Admin\\Desktop\\MD2-java-baitap\\Project-module2-javacore\\src\\RA\\data\\isLogin.txt";
     public static <T> List<T> getListFromFile(String path){
         File file = new File(path);// File là lớp đại diện cho 1 tệp , 1 thư mục trong thư mục
         if(!file.exists()) // kiểm tra sự tồn tại

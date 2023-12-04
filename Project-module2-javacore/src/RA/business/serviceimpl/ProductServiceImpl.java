@@ -18,9 +18,22 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<Product> findAllOrderByCreatedDate() {
-        return productDao.findAll().stream()
-                .sorted((o1, o2) -> o1.getCreate_at().compareTo(o2.getCreate_at()))
-                .collect(Collectors.toList());
+        if(productDao.findAll()!=null){
+            return productDao.findAll().stream()
+                    .sorted((o1, o2) -> o1.getCreate_at().compareTo(o2.getCreate_at()))
+                    .collect(Collectors.toList());
+        }
+        return null;
+    }
+
+    @Override
+    public List<Product> sortByPrice() {
+        if(productDao.findAll()!=null){
+            return productDao.findAll().stream()
+                    .sorted((o1, o2) -> Double.compare(o1.getUnitPrice(), o2.getUnitPrice()))
+                    .collect(Collectors.toList());
+        }
+        return null;
     }
 
     @Override
@@ -51,6 +64,9 @@ public class ProductServiceImpl implements IProductService {
     @Override
     public Long getNewId() {
         Long idMax = 0L;
+        if(productDao.findAll()==null){
+            return 1L;
+        }
         for (Product p:productDao.findAll()){
             if(idMax<p.getProductId()){
                 idMax = p.getProductId();

@@ -2,6 +2,7 @@ package RA.business.daoimpl;
 
 import RA.business.dao.IProductDao;
 import RA.business.entity.Product;
+import RA.business.run.Customer;
 import RA.util.IOFile;
 import RA.util.InputMethods;
 
@@ -12,7 +13,7 @@ public class ProductDaoImpl implements IProductDao {
     public static List<Product> products;
 
     public ProductDaoImpl() {
-        products = IOFile.getListFromFile(IOFile.PRODUCT_PATH);
+        products = Customer.products;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class ProductDaoImpl implements IProductDao {
 
     @Override
     public List<Product> findByName(String productName) {
-        return products.stream().filter(c->c.getProductName().contains(productName)).collect(Collectors.toList());
+        return products.stream().filter(c->c.getProductName().toLowerCase().contains(productName.toLowerCase())).collect(Collectors.toList());
     }
 
     @Override

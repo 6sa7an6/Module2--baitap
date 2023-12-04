@@ -1,9 +1,10 @@
-package RA.custonmer.account;
+package RA.business.entity.account;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     private Long id;
     private String username;
     private String email;
@@ -13,14 +14,22 @@ public class User {
     private boolean status;
     private LocalDateTime createAt;
     private LocalDateTime updateAt;
-    private List<OrdersDetail> cart;
+    private List<OrdersDetail> carts;
 
     public User() {
+    }
+
+    public User(Long id, String username, String password, boolean role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -90,11 +99,24 @@ public class User {
         this.updateAt = updateAt;
     }
 
-    public List<OrdersDetail> getCart() {
-        return cart;
+    public List<OrdersDetail> getCarts() {
+        return carts;
     }
 
-    public void setCart(List<OrdersDetail> cart) {
-        this.cart = cart;
+    public void setCarts(List<OrdersDetail> cart) {
+        this.carts = cart;
+    }
+
+    @Override
+    public String toString() {
+        return "[" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", role=" + (role?"admin":"user") +
+                ", status=" + (status?"Active":"Block") +
+                ", createAt=" + createAt +
+                ']';
     }
 }

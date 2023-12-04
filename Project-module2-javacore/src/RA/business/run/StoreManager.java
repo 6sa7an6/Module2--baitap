@@ -2,23 +2,26 @@ package RA.business.run;
 
 import RA.business.entity.Catalog;
 import RA.business.entity.Product;
+import RA.business.entity.account.User;
 import RA.business.service.ICatalogService;
 import RA.business.service.IProductService;
 import RA.business.serviceimpl.CatalogServiceImpl;
 import RA.business.serviceimpl.ProductServiceImpl;
+import RA.util.IOFile;
 import RA.util.InputMethods;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-
+import java.util.stream.Collectors;
 import static RA.business.daoimpl.CatalogDaoImpl.catalogs;
+import static RA.business.run.Customer.accountService;
 
 public class StoreManager {
-    private static ICatalogService catalogService = new CatalogServiceImpl();
-    private static IProductService productService = new ProductServiceImpl();
+    public static ICatalogService catalogService = new CatalogServiceImpl();
+    public static IProductService productService = new ProductServiceImpl();
 
-    public static void main(String[] args) {
+    public static void adminManager() {
         // chạy chương trình
 
         //b1 điều hướng menu :
@@ -33,6 +36,8 @@ public class StoreManager {
             System.out.println("-----Menu chức năng-----");
             System.out.println("1.Quản lý danh mục.");
             System.out.println("2.Quản lý sản phẩm.");
+            System.out.println("3.Quản lý người dùng .");
+            System.out.println("4.Đăng xuất .");
             System.out.println("0.Thoát chương trình.");
 
             // Yêu cầu người dùng nhập lựa chọn
@@ -47,6 +52,13 @@ public class StoreManager {
                     menuProduct();
                     // dieu huong menu san pham
                     break;
+                case 3:
+                    // quan ly nguoi dung
+                    UserManager();
+                    break;
+                case 4:
+                    accountService.logOut();
+                    return;
                 case 0:
                     System.out.println("Thoát chương trình!");
                     System.exit(0);
@@ -54,6 +66,43 @@ public class StoreManager {
                     System.err.println("Hãy nhập lựa chọn từ 0 -> 2 !");
             }
         } while (true);
+    }
+
+    private static void UserManager() {
+        while (true) {
+            System.out.println("----------Menu quản lý User----------");
+            System.out.println("1.Hiển thị danh sách người dùng .");
+            System.out.println("2.Tìm kiếm người dùng theo tên .");
+            System.out.println("0.Quay trở lại menu chức năng .");
+            System.out.print("Hãy nhập lựa chọn : ");
+            byte choice = InputMethods.getByte();
+            switch (choice) {
+                case 1:
+                    List<User> users = IOFile.getListFromFile(IOFile.USER_PATH);
+                    if (users != null) {
+                        users.stream().sorted((o1, o2) -> o1.getUsername().compareTo(o2.getUsername())).filter(user -> !Objects.equals(user.getUsername(), "admin")).forEach(System.out::println);
+                        break;
+                    } else {
+                        System.err.println("Danh sách người dùng trống !");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Nhập tên người dùng cần tìm kiếm : ");
+                    String findName = InputMethods.getString();
+                    Optional<User> foundUser = accountService.findByName(findName);
+                    if (foundUser != null && foundUser.isPresent()) {
+                        User user = foundUser.get();
+                        System.out.println(user);
+                    } else {
+                        System.err.println("Người dùng không tồn tại !");
+                    }
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.err.println("Hãy nhập từ 0 -> 2 !");
+            }
+        }
     }
 
     // xu ly cac chuc nang cua danh muc
@@ -169,7 +218,7 @@ public class StoreManager {
         while (true) {
             Long newId = InputMethods.getLong();
             if (!catalogs.stream().anyMatch(catalog1 -> Objects.equals(catalog1.getCatalogId(), newId))) {
-                catalog.setCatalogId(InputMethods.getLong());
+                catalog.setCatalogId(newId);
                 break;
             }
             System.err.println("ID đã tồn tại !");
@@ -254,7 +303,7 @@ public class StoreManager {
 
     // chức năng hiển thị
     public static void displayListProduct(List<Product> list) {
-        if (list.isEmpty()) {
+        if (list==null) {
             System.err.println("Danh sách không có sản phẩm nào !");
         } else {
             list.forEach(System.out::println);
